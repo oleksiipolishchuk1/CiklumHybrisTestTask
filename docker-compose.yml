@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  db:
+    image: mariadb:10.5
+    container_name: sping_db
+    restart: "no"
+    volumes:
+      - ./docker/sqldata:/var/lib/mysql
+      - ./docker/db/conf.d:/etc/mysql/conf.d
+    ports:
+      - 7906:3306
+    env_file:
+      - ./docker/db.env
+
+

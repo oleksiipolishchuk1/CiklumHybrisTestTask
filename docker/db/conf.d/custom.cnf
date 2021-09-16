@@ -1,0 +1,8 @@
+[mysqld]
+# max_connections = 150
+# innodb_buffer_pool_size = 1G # (adjust value here, 50%-70% of total RAM)
+# innodb_log_file_size = 256M
+# #query_cache_type = 0
+# #query_cache_size = 0
+# query_cache_limit = 128K
+# query_cache_size = 256M
