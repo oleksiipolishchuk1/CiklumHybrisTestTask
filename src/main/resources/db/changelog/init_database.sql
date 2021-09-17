@@ -1,0 +1,4 @@
+USE testdb;
+
+CREATE USER IF NOT EXISTS 'app_user'@'%' IDENTIFIED BY '123456';
+GRANT SELECT, INSERT, UPDATE, DELETE ON `kyc`.* TO 'app_user'@'%';
