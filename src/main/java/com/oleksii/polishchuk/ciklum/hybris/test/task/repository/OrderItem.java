@@ -24,4 +24,7 @@ public class OrderItem {
     @MapsId("orderId")
     @JoinColumn(name = "order_id")
     Order order;
+
+    @Column(name = "quantity")
+    Integer quantity;
 }
