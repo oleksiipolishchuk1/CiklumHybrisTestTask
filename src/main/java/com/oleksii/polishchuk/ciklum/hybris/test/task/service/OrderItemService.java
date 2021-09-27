@@ -9,10 +9,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class OrderItemService {
 
-    private final OrderItemRepository orderItemRepository;
-    public OrderItem getOrderItemByOrderIdAndProductId(int productId, int orderId) {
-        return orderItemRepository.findByProductAndOrder(productId, orderId)
-                .orElseThrow(()->new IllegalArgumentException());
+  private final OrderItemRepository orderItemRepository;
 
-    }
+  public OrderItem getOrderItemByOrderIdAndProductId(int productId, int orderId) {
+    return orderItemRepository
+        .findByProductAndOrder(productId, orderId)
+        .orElseThrow(() -> new IllegalArgumentException());
+  }
 }

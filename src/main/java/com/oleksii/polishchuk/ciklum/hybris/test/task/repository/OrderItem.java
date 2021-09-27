@@ -1,30 +1,28 @@
 package com.oleksii.polishchuk.ciklum.hybris.test.task.repository;
 
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
 @Cacheable
+@Table(name = "order_items")
 public class OrderItem {
 
-    @EmbeddedId
-    OrderItemKey id;
+  @EmbeddedId OrderItemKey id;
 
-    @OneToOne
-    @MapsId("productId")
-    @JoinColumn(name = "product_id")
-    Product product;
+  @OneToOne
+  @MapsId("productId")
+  @JoinColumn(name = "product_id", columnDefinition = "int(11)")
+  Product product;
 
+  @OneToOne
+  @MapsId("orderId")
+  @JoinColumn(name = "order_id", columnDefinition = "int(11)")
+  Order order;
 
-    @OneToOne
-    @MapsId("orderId")
-    @JoinColumn(name = "order_id")
-    Order order;
-
-    @Column(name = "quantity")
-    Integer quantity;
+  @Column(name = "quantity")
+  Integer quantity;
 }

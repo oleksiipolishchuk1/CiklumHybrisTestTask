@@ -5,9 +5,8 @@ import org.mockito.MockitoAnnotations;
 
 public class BaseUnitTest {
 
-    @BeforeEach
-    void init(){
-        MockitoAnnotations.initMocks(this);
-    }
-
+  @BeforeEach
+  void init() {
+    MockitoAnnotations.initMocks(this);
+  }
 }

@@ -1,15 +1,15 @@
 package com.oleksii.polishchuk.ciklum.hybris.test.task.repository;
 
+import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 @Entity
 @Getter
 @Setter
+@Table(name = "orders")
 public class Order {
-    @Id
-    private Integer id;
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Id
+  private Integer id;
 }
