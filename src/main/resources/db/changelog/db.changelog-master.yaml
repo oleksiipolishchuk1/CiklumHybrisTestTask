@@ -1,8 +1,22 @@
 databaseChangeLog:
   - changeSet:
-      id: 1 add user for app
+      id: 1 create products table
       author: oleksii.polishchuk
       changes:
         - sqlFile:
             relativeToChangelogFile: true
-            path: init_database.sql
+            path: create_products_table.sql
+  - changeSet:
+      id: 2 create orders table
+      author: oleksii.polishchuk
+      changes:
+        - sqlFile:
+            relativeToChangelogFile: true
+            path: create_orders_table.sql
+  - changeSet:
+      id: 3 create order items table
+      author: oleksii.polishchuk
+      changes:
+        - sqlFile:
+            relativeToChangelogFile: true
+            path: create_order_items_table.sql
