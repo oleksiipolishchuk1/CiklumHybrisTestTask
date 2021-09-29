@@ -1,8 +1,10 @@
 package com.oleksii.polishchuk.ciklum.hybris.test.task.repository;
 
+import java.util.Date;
 import javax.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Getter
@@ -18,5 +20,8 @@ public class Order {
 
   private String status;
 
-  private String created_at;
+  @LastModifiedDate
+  @Temporal(TemporalType.TIMESTAMP)
+  @Column(name = "created_at", columnDefinition = "varchar(255) not null")
+  private Date created_at;
 }

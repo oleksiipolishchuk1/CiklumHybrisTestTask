@@ -15,12 +15,12 @@ public class OrderItem {
 
   @OneToOne
   @MapsId("productId")
-  @JoinColumn(name = "product_id", columnDefinition = "int(11)")
+  @JoinColumn(name = "orderId", columnDefinition = "int(11)")
   Product product;
 
   @OneToOne
   @MapsId("orderId")
-  @JoinColumn(name = "order_id", columnDefinition = "int(11)")
+  @JoinColumn(name = "productId", columnDefinition = "int(11)")
   Order order;
 
   @Column(name = "quantity")
