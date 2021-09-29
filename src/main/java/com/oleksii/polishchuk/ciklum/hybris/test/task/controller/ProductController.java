@@ -1,5 +1,10 @@
 package com.oleksii.polishchuk.ciklum.hybris.test.task.controller;
 
+import com.oleksii.polishchuk.ciklum.hybris.test.task.repository.Product;
+import com.oleksii.polishchuk.ciklum.hybris.test.task.service.ProductService;
+import java.util.HashMap;
+import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,14 +13,22 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/product")
 public class ProductController {
 
-  @PutMapping("/create")
-  public ResponseEntity<String> createProduct(@RequestParam(required = true) String title) {
+  @Autowired ProductService productService;
 
-    System.out.println("createProduct");
-
-    return new ResponseEntity<>("createProduct", HttpStatus.OK);
+  public ProductController(ProductService productService) {
+    this.productService = productService;
   }
 
+  @PostMapping("/create")
+  public ResponseEntity<HashMap> createProduct(@RequestBody @Valid Product product) {
+    Product _product = productService.create(product);
+
+    HashMap result = new HashMap();
+    result.put("product", _product);
+    System.out.println("created Product");
+
+    return new ResponseEntity<>(result, HttpStatus.OK);
+  }
 
   @GetMapping("/list")
   public ResponseEntity<String> getAllproducts(@RequestParam(required = false) String title) {

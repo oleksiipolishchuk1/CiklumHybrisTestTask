@@ -13,4 +13,9 @@ public class ProductService {
   public Product getProductById(int productId) {
     return productRepositoryl.findById(productId).orElseThrow(() -> new IllegalArgumentException());
   }
+
+  public Product create(Product product) {
+    Product _product = this.productRepositoryl.save(product);
+    return _product;
+  }
 }

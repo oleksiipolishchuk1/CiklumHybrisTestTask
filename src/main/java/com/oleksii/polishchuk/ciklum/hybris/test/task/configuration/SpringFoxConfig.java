@@ -22,7 +22,9 @@ public class SpringFoxConfig {
   public Docket api() {
     return new Docket(DocumentationType.SWAGGER_2)
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.oleksii.polishchuk.ciklum.hybris.test.task.controller"))
+        .apis(
+            RequestHandlerSelectors.basePackage(
+                "com.oleksii.polishchuk.ciklum.hybris.test.task.controller"))
         .paths(PathSelectors.any())
         .build()
         .apiInfo(apiInfo());
