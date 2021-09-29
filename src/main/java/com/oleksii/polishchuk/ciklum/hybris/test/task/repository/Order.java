@@ -12,4 +12,11 @@ public class Order {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
   private Integer id;
+
+  @Column(name = "user_id")
+  private Integer userId;
+
+  private String status;
+
+  private String created_at;
 }
