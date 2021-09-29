@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/order")
 public class OrderController {
 
-  @PutMapping("/create")
-  public ResponseEntity<String> createOrderWithListOfProducts(@RequestParam(required = true) String title) {
+  @PostMapping("/create")
+  public ResponseEntity<String> createOrderWithListOfProducts(
+      @RequestParam(required = true) String title) {
 
     System.out.println("createOrderWithListOfProducts");
 

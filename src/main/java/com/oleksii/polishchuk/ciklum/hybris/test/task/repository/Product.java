@@ -19,6 +19,6 @@ public class Product {
   @Column(name = "price")
   Integer price;
 
-  @Column(name = "status", columnDefinition = "ENUM('out_of_stock', 'in_stock', 'running_low')")
+  @Column(name = "status", columnDefinition = "ENUM('out_of_stock', 'in_stock', 'running_low') default 'out_of_stock'")
   String status;
 }
