@@ -1,9 +1,8 @@
 package com.oleksii.polishchuk.ciklum.hybris.test.task.service;
 
 import com.oleksii.polishchuk.ciklum.hybris.test.task.repository.*;
-
 import java.util.Date;
-
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,23 +26,25 @@ public class OrderService {
     order.setStatus("NEW");
     Order _order = orderRepository.save(order);
 
-    if (orderNew.getProducts() != null){
-      orderNew.getProducts().forEach(orderProduct -> {
-        // Check if product is exist
-        Product _product = productService.getProductById(orderProduct.getProduct());
-        if(_product != null){
-          OrderItemKey orderItemKey = new OrderItemKey();
-          OrderItem  orderItem = new OrderItem();
-          orderItem.setId(orderItemKey);
-          orderItem.setProduct(_product);
-          orderItem.setOrder(_order);
-          orderItem.setQuantity(orderProduct.getQuantity());
+    if (orderNew.getProducts() != null) {
+      orderNew
+          .getProducts()
+          .forEach(
+              orderProduct -> {
+                // Check if product is exist
+                Product _product = productService.getProductById(orderProduct.getProduct());
+                if (_product != null) {
+                  OrderItemKey orderItemKey = new OrderItemKey();
+                  OrderItem orderItem = new OrderItem();
+                  orderItem.setId(orderItemKey);
+                  orderItem.setProduct(_product);
+                  orderItem.setOrder(_order);
+                  orderItem.setQuantity(orderProduct.getQuantity());
 
-          // Store order product
-          OrderItem _orderItem = orderItemRepository.save(orderItem);
-        }
-
-      });
+                  // Store order product
+                  OrderItem _orderItem = orderItemRepository.save(orderItem);
+                }
+              });
     }
 
     System.out.println(orderNew);
@@ -70,5 +71,30 @@ public class OrderService {
     //    }
 
     return _order;
+  }
+
+  public void updateOrderEntries(OrderUpdate orderUpdate) {
+
+    Optional<Order> _order = orderRepository.findById(orderUpdate.getOrderId());
+    /*if(_order.isPresent()){
+      orderUpdate.getProducts().forEach(orderProduct -> {
+        // Check if product is exist
+        Product _product = productService.getProductById(orderProduct.getProduct());
+        if(_product != null){
+          Optional<OrderItem> orderItem = orderItemRepository.findByProductAndOrder(_product.getId(), _order.get().getId());
+
+          if(orderItem.isPresent()){
+            OrderItem _orderItem = orderItem.get();
+          }
+          OrderItem  orderItem = new OrderItem();
+          orderItem.setId(orderItemKey);
+          orderItem.setProduct(_product);
+          orderItem.setOrder(_order);
+          orderItem.setQuantity(orderProduct.getQuantity());
+
+          // Store order product
+          OrderItem _orderItem = orderItemRepository.save(orderItem);
+        }
+    }*/
   }
 }

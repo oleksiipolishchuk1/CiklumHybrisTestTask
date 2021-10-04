@@ -1,10 +1,9 @@
 package com.oleksii.polishchuk.ciklum.hybris.test.task.service;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
 import lombok.Builder;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @Builder
@@ -12,7 +11,7 @@ import java.util.List;
 public class OrderNew {
   public List<OrderProduct> products;
 
-  public OrderNew(){}
+  public OrderNew() {}
 
   public OrderNew(List<OrderProduct> products) {
     this.products = products;
